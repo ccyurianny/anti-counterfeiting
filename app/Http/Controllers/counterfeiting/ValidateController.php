@@ -22,10 +22,8 @@ class ValidateController extends Controller
     {
         $product = Product::where('code', $request->get('code'))->first();
         //$invite = Product::create(['code' => '54321']);
-
-
         if (!$product) {
-             return response()->json(['messageNot' => 'We are sorry!. Your product is FAKE']);
+             return response()->json(['messageNot' => 'We are sorry. It looks like your product is a FAKE']);
         }else{
             if ($request->get('city_id')){
                 Statistic::create([

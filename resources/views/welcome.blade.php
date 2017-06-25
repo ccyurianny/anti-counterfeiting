@@ -172,12 +172,12 @@
                     <div aria-label="...">
                         <p class="text1">City:</p>
                         <select class="form-control" name="city_id" id="cit" size="1">
-                            <option value="">Select a city</option>
+                            <option value="">Select city</option>
                         </select>
                         <br>
                     </div>
-                    <p>Please Input your product ID:</p>
                     <div>
+                        <p class="text1" >Please Input your product ID:</p>
                         <input type="text" class="textbox" name="code" id="code" placeholder="Product ID">
                         <button type="button" id="btn-check">Check</button>
                     </div>
