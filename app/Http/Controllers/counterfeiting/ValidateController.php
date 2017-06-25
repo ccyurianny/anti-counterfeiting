@@ -21,9 +21,11 @@ class ValidateController extends Controller
     public function check(Request $request)
     {
         $product = Product::where('code', $request->get('code'))->first();
+        //$invite = Product::create(['code' => '54321']);
+
 
         if (!$product) {
-             return response()->json(['messageNot' => 'Product is NOT the original']);
+             return response()->json(['messageNot' => 'We are sorry!. Your product is FAKE']);
         }else{
             if ($request->get('city_id')){
                 Statistic::create([
@@ -31,7 +33,9 @@ class ValidateController extends Controller
                     'product_id' => $product->id,
                 ]);
             }
-            return response()->json(['message' => 'Product is the original']);
+
+            $product->delete();
+            return response()->json(['message' => 'Your product is ORIGINAL']);
         }
 
     }

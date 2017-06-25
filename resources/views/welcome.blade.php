@@ -17,7 +17,6 @@
         html, body {
             background-color: #020202;
             color: #636b6f;
-            font-family: 'Raleway', sans-serif;
             font-weight: 100;
             height: 100vh;
             margin: 0;
@@ -56,7 +55,7 @@
 
         .text {
             color: #fff60c;
-            font-weight: 800;
+            font-weight: normal;
             text-align: justify;
 
         }
@@ -72,7 +71,7 @@
 
         .messag {
             font-size: 40px;
-            color: #1fcc2d;
+            color: #fff60c;
         }
 
         p{
@@ -89,7 +88,8 @@
             text-decoration: none;
             text-transform: uppercase;
         }
-
+        .textbox {
+        }
     </style>
     <script>
         $(document).on('ready', function () {
@@ -117,14 +117,20 @@
                     data: $("#form").serialize(),
                     success: function (data) {
                         if (data.message) {
+                            $('#respNot').hide();
+                            $('#resp').hide();
+
                             $('#resp').html(data.message);
                             $('#resp').show();
-                            $('#resp').delay(4000).hide(600);
+                            //   $('#resp').delay(4000).hide(600);
                         }
                         if (data.messageNot) {
+                            $('#respNot').hide();
+                            $('#resp').hide();
+
                             $('#respNot').html(data.messageNot);
                             $('#respNot').show();
-                            $('#respNot').delay(4000).hide(600);
+                         //   $('#respNot').delay(4000).hide(600);
                         }
                     }
                 });
@@ -163,16 +169,16 @@
             <div class="col-md-3">
 
                 <form id="form">
-                    <div class="btn-group" role="group" aria-label="...">
+                    <div aria-label="...">
                         <p class="text1">City:</p>
                         <select class="form-control" name="city_id" id="cit" size="1">
                             <option value="">Select a city</option>
                         </select>
                         <br>
                     </div>
-                    <p class="">Please Input your product ID:</p>
-                    <div class="">
-                        <input type="text" name="code" id="code" placeholder="Product ID">
+                    <p>Please Input your product ID:</p>
+                    <div>
+                        <input type="text" class="textbox" name="code" id="code" placeholder="Product ID">
                         <button type="button" id="btn-check">Check</button>
                     </div>
                 </form>

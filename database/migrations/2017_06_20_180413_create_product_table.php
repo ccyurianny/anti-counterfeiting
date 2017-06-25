@@ -17,6 +17,8 @@ class CreateProductTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->nullableTimestamps();
+            $table->SoftDeletes();
+
         });
     }
 
