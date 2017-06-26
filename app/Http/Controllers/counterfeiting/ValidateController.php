@@ -23,9 +23,17 @@ class ValidateController extends Controller
         $product = Product::where('code', $request->get('code'))->first();
         //$invite = Product::create(['code' => '54321']);
         if (!$product) {
-             return response()->json(['messageNot' => 'We are sorry. It looks like your product is a FAKE']);
-        }else{
-            if ($request->get('city_id')){
+
+            $product = Product::withTrashed()->where('code', $request->get('code'))->first();
+
+            if ($product) {
+                return response()->json(['messageNot' => 'This code was validated already. Your product is ORIGINAL.']);
+            } else {
+                return response()->json(['messageNot' => 'We are sorry. It looks like your product is a FAKE']);
+            }
+
+        } else {
+            if ($request->get('city_id')) {
                 Statistic::create([
                     'city_id' => $request['city_id'],
                     'product_id' => $product->id,

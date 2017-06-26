@@ -125,6 +125,7 @@
                             //   $('#resp').delay(4000).hide(600);
                         }
                         if (data.messageNot) {
+                            $('#respNot').val('');
                             $('#respNot').hide();
                             $('#resp').hide();
 
