@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 Route::post('/counterfeiting', 'counterfeiting\ValidateController@check');
 Route::get('/cities', 'counterfeiting\ValidateController@index');
+Route::post('/import-excel', 'ExcelController@importUsers');
+Route::get('/cargar-datos', function () {
+    return view('cargar');
+});
